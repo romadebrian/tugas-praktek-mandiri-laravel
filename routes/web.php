@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/programming-languages', function () {
+    $programmingLanguages = ['php', 'java', 'c', 'javascript', 'dart'];
+    echo "Bahasa pemrograman yang saya bisa adalah : ";
+    for ($i = 0; $i < count($programmingLanguages); $i++) {
+        echo $programmingLanguages[$i] . ", ";
+    };
+});
