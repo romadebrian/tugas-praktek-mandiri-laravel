@@ -24,3 +24,15 @@ Route::get('/programming-languages', function () {
         echo $programmingLanguages[$i] . ", ";
     };
 });
+
+Route::get('news', function () {
+    return view('index');
+});
+
+Route::get('login', function () {
+    return view('login');
+});
+
+Route::get('register', function () {
+    return view('register');
+});
