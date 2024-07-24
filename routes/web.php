@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('news');
+// });
 
 Route::get('/programming-languages', function () {
     $programmingLanguages = ['php', 'java', 'c', 'javascript', 'dart'];
@@ -25,10 +26,6 @@ Route::get('/programming-languages', function () {
     };
 });
 
-Route::get('news', function () {
-    return view('index');
-});
-
 Route::get('login', function () {
     return view('login');
 });
@@ -36,3 +33,7 @@ Route::get('login', function () {
 Route::get('register', function () {
     return view('register');
 });
+
+Route::get('/', [NewsController::class, 'index']);
+
+Route::resource('news', NewsController::class);
