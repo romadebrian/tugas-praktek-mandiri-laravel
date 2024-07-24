@@ -66,7 +66,16 @@ class NewsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'content' => 'required|string',
+            'image' => 'required|string',
+        ]);
+
+        // dd($request);
+        Posts::find($id)->update($validator);
+        return redirect('/')->with('success', 'Data Berhasil Di Update');
     }
 
     /**
