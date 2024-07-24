@@ -21,7 +21,11 @@
                             </div>
                             <a href="{{ route('news.edit', $item->id) }}" class="btn btn-success"
                                 style="margin-top: 10px;">Edit</a>
-                            <a href="https://event.detik.com" class="btn btn-danger" style="margin-top: 10px;">Delete</a>
+                            <form action="{{ route('news.destroy', $item->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" style="margin-top: 10px;">Delete</button>
+                            </form>
                         </div>
                     </div>
                 </div>

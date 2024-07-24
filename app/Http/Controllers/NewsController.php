@@ -83,6 +83,7 @@ class NewsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Posts::find($id)->delete();
+        return redirect('/')->with('success', 'Data Berhasil di Hapus');
     }
 }
