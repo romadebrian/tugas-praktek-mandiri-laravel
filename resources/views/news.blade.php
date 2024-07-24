@@ -19,13 +19,17 @@
                                 <p>{{ $item->description }}</p>
                                 <p style="margin-top: -10px"> {{ $item->created_at }} </p>
                             </div>
-                            <a href="{{ route('news.edit', $item->id) }}" class="btn btn-success"
-                                style="margin-top: 10px;">Edit</a>
-                            <form action="{{ route('news.destroy', $item->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" style="margin-top: 10px;">Delete</button>
-                            </form>
+
+                            <div class="row">
+                                <a href="{{ route('news.edit', $item->id) }}" class="btn btn-success"
+                                    style="margin-top: 10px;">Edit</a>
+                                <form action="{{ route('news.destroy', $item->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger"
+                                        style="margin-top: 10px; margin-left: 10px">Delete</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
