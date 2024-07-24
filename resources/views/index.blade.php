@@ -249,6 +249,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    @include('flashmassage')
                     @yield('main')
 
                 </div>
