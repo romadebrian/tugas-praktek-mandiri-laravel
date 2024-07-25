@@ -41,7 +41,7 @@ class NewsController extends Controller
         // dd($validator);
 
         Posts::create($validator);
-        return redirect('/')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect('admin')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -75,7 +75,7 @@ class NewsController extends Controller
 
         // dd($request);
         Posts::find($id)->update($validator);
-        return redirect('/')->with('success', 'Data Berhasil Di Update');
+        return redirect('admin')->with('success', 'Data Berhasil Di Update');
     }
 
     /**
@@ -84,6 +84,6 @@ class NewsController extends Controller
     public function destroy(string $id)
     {
         Posts::find($id)->delete();
-        return redirect('/')->with('success', 'Data Berhasil di Hapus');
+        return redirect('admin')->with('success', 'Data Berhasil di Hapus');
     }
 }

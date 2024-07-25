@@ -35,9 +35,15 @@ Route::get('register', function () {
     return view('register');
 });
 
-Route::get('news', [NewsController::class, 'index']);
+// Route::get('admin', function () {
+//     return view('index');
+// });
 
-Route::resource('news', NewsController::class);
+Route::get('admin', [NewsController::class, 'index']);
+
+Route::get('admin/news', [NewsController::class, 'index']);
+
+Route::resource('admin/news', NewsController::class)->middleware(['auth', 'admin']);
 
 Auth::routes();
 
