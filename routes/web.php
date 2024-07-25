@@ -39,7 +39,7 @@ Route::get('register', function () {
 //     return view('index');
 // });
 
-Route::get('admin', [NewsController::class, 'index']);
+Route::get('admin', [NewsController::class, 'index'])->middleware(['auth', 'admin']);
 
 Route::get('admin/news', [NewsController::class, 'index']);
 
