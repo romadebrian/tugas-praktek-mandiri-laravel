@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -69,3 +70,5 @@ Route::get('post/{id_post}', [NewsController::class, 'show']);
 Route::resource('admin/produk', ProdukController::class)->middleware(['auth', 'admin']);
 
 Route::resource('admin/kategori', KategoriController::class)->middleware(['auth', 'admin']);
+
+Route::resource('admin/user', UserController::class)->middleware(['auth', 'admin']);

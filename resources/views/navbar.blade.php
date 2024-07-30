@@ -104,6 +104,11 @@
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Kategori</span></a>
 </li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ URL::to('admin/user') }}">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>User</span></a>
+</li>
 
 <!-- Nav Item - Tables -->
 {{-- <li class="nav-item">
