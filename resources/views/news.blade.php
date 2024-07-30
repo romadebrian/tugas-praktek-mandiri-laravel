@@ -7,9 +7,9 @@
             <div class="row">
                 <div class="">
                     <div class="d-flex flex-row">
-                        <div class="p-2"><img src="{{ asset($item->image) }}" alt="Event Image"
-                                style="width: 200px; border-radius: 10px;">
-
+                        <div class="p-2">
+                            <img src="{{ asset('storage/' . $item->image) }}" alt="Event Image"
+                                style="width: 300px; height: 200px; border-radius: 10px;">
                         </div>
                         <div class="p-2">
                             <h3 class="" style="font-weight: bold; margin-top: 10px;">

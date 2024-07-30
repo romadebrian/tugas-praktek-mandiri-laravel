@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Posts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class NewsController extends Controller
 {
@@ -14,7 +16,19 @@ class NewsController extends Controller
     {
         $data = Posts::all();
         // dd($data);
-        return view('news', compact('data'));
+
+
+        if (request()->path() == 'admin' or request()->path() == 'admin/news') {
+            return view('news', compact('data'));
+        } else {
+            return view('home', compact('data'));
+        }
+
+        // if (Auth::user()->role == 'admin') {
+        //     return view('news', compact('data'));
+        // } else {
+        //     return view('home', compact('data'));
+        // }
     }
 
     /**
@@ -35,11 +49,12 @@ class NewsController extends Controller
             'title' => 'required|string',
             'description' => 'required|string',
             'content' => 'required|string',
-            'image' => 'required|string',
+            'image' => 'required|max:2000|mimes:jpg',
         ]);
 
         // dd($validator);
 
+        $validator['image'] = $request->file('image')->store('img'); // Menentukan file yang bisa di upload
         Posts::create($validator);
         return redirect('admin')->with('success', 'Data Berhasil Ditambahkan');
     }
@@ -49,7 +64,11 @@ class NewsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Posts::find($id);
+        // dd($data);
+
+
+        return view('viewNews', compact('data'));
     }
 
     /**
@@ -70,10 +89,14 @@ class NewsController extends Controller
             'title' => 'required|string',
             'description' => 'required|string',
             'content' => 'required|string',
-            'image' => 'required|string',
+            'image' => 'required|max:2000|mimes:jpg',
         ]);
 
         // dd($request);
+        // dd($validator);
+
+        $validator['image'] = $request->file('image')->store('img');
+
         Posts::find($id)->update($validator);
         return redirect('admin')->with('success', 'Data Berhasil Di Update');
     }
