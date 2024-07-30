@@ -1,23 +1,27 @@
-@extends('layouts.app')
+@extends('index')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+@section('main')
+    @foreach ($data as $item)
+        <div class="container mt-5">
+            <div class="row">
+                <div class="">
+                    <div class="d-flex flex-row">
+                        <div class="p-2"><img src="{{ asset($item->image) }}" alt="Event Image"
+                                style="width: 200px; border-radius: 10px;">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
                         </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                        <div class="p-2">
+                            <h3 class="" style="font-weight: bold; margin-top: 10px;">
+                                <a href="{{ URL::to('post', $item->id) }}">{{ $item->title }}</a>
+                            </h3>
+                            <div class="" style="margin-top: 0px;">
+                                <p>{{ $item->description }}</p>
+                                <p style="margin-top: -10px"> {{ $item->created_at }} </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    @endforeach
 @endsection
