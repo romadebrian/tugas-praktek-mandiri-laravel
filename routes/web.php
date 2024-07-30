@@ -43,11 +43,11 @@ Route::get('register', function () {
 //     return view('index');
 // });
 
-Route::get('admin', [NewsController::class, 'index'])->middleware(['auth', 'admin']);
+Route::get('admin', [NewsController::class, 'index'])->middleware(['auth', 'editor']);
 
 Route::get('admin/news', [NewsController::class, 'index']);
 
-Route::resource('admin/news', NewsController::class)->middleware(['auth', 'admin']);
+Route::resource('admin/news', NewsController::class)->middleware(['auth', 'editor']);
 
 Auth::routes();
 
@@ -67,8 +67,8 @@ Route::get('post/{id_post}', [NewsController::class, 'show']);
 //     return redirect('/');
 // });
 
-Route::resource('admin/produk', ProdukController::class)->middleware(['auth', 'admin']);
+Route::resource('admin/produk', ProdukController::class)->middleware(['auth', 'editor']);
 
-Route::resource('admin/kategori', KategoriController::class)->middleware(['auth', 'admin']);
+Route::resource('admin/kategori', KategoriController::class)->middleware(['auth', 'editor']);
 
 Route::resource('admin/user', UserController::class)->middleware(['auth', 'admin']);
