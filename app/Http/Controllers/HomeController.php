@@ -25,13 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = Posts::all();
-        // dd($data);
-
-        if (Auth::user()->role == 'admin') {
+        if (Auth::user()->role == 'admin' or Auth::user()->role == 'editor') {
             return redirect('admin');
         } else {
-            return view('home', compact('data'));
+            return redirect('/');
         }
     }
 
@@ -40,10 +37,5 @@ class HomeController extends Controller
      */
     public function show(string $id)
     {
-        $data = Posts::find($id);
-        // dd($data);
-
-
-        return view('viewNews', compact('data'));
     }
 }

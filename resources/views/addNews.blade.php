@@ -19,8 +19,9 @@
         </div>
         <div class="form-group">
             <label>Content</label>
-            <input type="text" class="form-control @error('content') is-invalid @enderror" name="content"
-                value="{{ old('content') }}">
+
+            {{-- <input type="text" class="form-control @error('content') is-invalid @enderror" name="content"
+                value="{{ old('content') }}"> --}}
 
             {{-- @include('components/forms/tinymce-editor') --}}
             {{-- <x-forms.tinymce-editor /> --}}

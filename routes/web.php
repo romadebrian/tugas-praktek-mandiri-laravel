@@ -49,12 +49,17 @@ Route::resource('admin/news', NewsController::class)->middleware(['auth', 'admin
 Auth::routes();
 
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [NewsController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::resource('post', HomeController::class);
-Route::get('post/{id_post}', [HomeController::class, 'show']);
+Route::get('post/{id_post}', [NewsController::class, 'show']);
 
 
-Route::get('post', function () {
-    return redirect('/');
-});
+// Route::get('post', function () {
+//     return redirect('/');
+// });

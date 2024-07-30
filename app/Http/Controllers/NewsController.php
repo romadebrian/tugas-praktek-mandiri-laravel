@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Posts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class NewsController extends Controller
 {
@@ -14,7 +16,19 @@ class NewsController extends Controller
     {
         $data = Posts::all();
         // dd($data);
-        return view('news', compact('data'));
+
+
+        if (request()->path() == 'admin' or request()->path() == 'admin/news') {
+            return view('news', compact('data'));
+        } else {
+            return view('home', compact('data'));
+        }
+
+        // if (Auth::user()->role == 'admin') {
+        //     return view('news', compact('data'));
+        // } else {
+        //     return view('home', compact('data'));
+        // }
     }
 
     /**
@@ -49,7 +63,11 @@ class NewsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Posts::find($id);
+        // dd($data);
+
+
+        return view('viewNews', compact('data'));
     }
 
     /**
