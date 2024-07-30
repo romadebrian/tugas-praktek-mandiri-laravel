@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 Route::get('/programming-languages', function () {
     $programmingLanguages = ['php', 'java', 'c', 'javascript', 'dart'];
@@ -55,6 +55,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('post/{id_post}', [HomeController::class, 'show']);
 
 
-// Route::get('post', function () {
-//     return redirect('/');
-// });
+Route::get('post', function () {
+    return redirect('/');
+});

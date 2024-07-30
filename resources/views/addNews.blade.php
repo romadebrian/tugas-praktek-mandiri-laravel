@@ -13,15 +13,22 @@
                 value="{{ old('description') }}">
         </div>
         <div class="form-group">
-            <label>Content</label>
-            <input type="text" class="form-control @error('content') is-invalid @enderror" name="content"
-                value="{{ old('content') }}">
-        </div>
-        <div class="form-group">
             <label>Image</label>
             <input type="text" class="form-control @error('image') is-invalid @enderror" name="image"
                 value="{{ old('image') }}">
         </div>
+        <div class="form-group">
+            <label>Content</label>
+            <input type="text" class="form-control @error('content') is-invalid @enderror" name="content"
+                value="{{ old('content') }}">
+
+            {{-- @include('components/forms/tinymce-editor') --}}
+            {{-- <x-forms.tinymce-editor /> --}}
+
+            <textarea id="myeditorinstance" name="content">{{ old('content') }}</textarea>
+
+        </div>
+
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

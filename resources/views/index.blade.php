@@ -20,6 +20,8 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('sb/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    {{-- @include('components/head/tinymce-config') --}}
+    <x-head.tinymce-config />
 </head>
 
 <body id="page-top">
