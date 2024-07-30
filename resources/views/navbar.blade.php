@@ -10,11 +10,20 @@
 <hr class="sidebar-divider my-0">
 
 <!-- Nav Item - Dashboard -->
-<li class="nav-item active">
-    <a class="nav-link" href="{{ URL::to('/') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
-</li>
+@if (Auth::user()->role == 'admin' or Auth::user()->role == 'editor')
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ URL::to('admin') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+@else
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ URL::to('/') }}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+@endif
+
 
 <!-- Divider -->
 <hr class="sidebar-divider">
@@ -40,16 +49,30 @@
     </div>
 </li> --}}
 
-<li class="nav-item">
-    <a class="nav-link" href="{{ URL::to('admin/news') }}">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>News</span></a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ URL::to('admin/produk') }}">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Barang</span></a>
-</li>
+@if (Auth::user()->role == 'admin' or Auth::user()->role == 'editor')
+    <li class="nav-item">
+        <a class="nav-link" href="{{ URL::to('admin/news') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>News</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ URL::to('admin/produk') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Barang</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ URL::to('admin/kategori') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Kategori</span></a>
+    </li>
+@else
+    <li class="nav-item">
+        <a class="nav-link" href="{{ URL::to('kategori') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Kategori</span></a>
+    </li>
+@endif
+
 
 <!-- Nav Item - Utilities Collapse Menu -->
 {{-- <li class="nav-item">
@@ -69,13 +92,22 @@
     </div>
 </li> --}}
 
-<!-- Divider -->
-<hr class="sidebar-divider">
+@if (Auth::user()->role == 'admin')
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-<!-- Heading -->
-<div class="sidebar-heading">
-    Addons
-</div>
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Admin
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ URL::to('admin/user') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>User</span></a>
+    </li>
+@endif
+
 
 <!-- Nav Item - Pages Collapse Menu -->
 {{-- <li class="nav-item">
@@ -97,18 +129,6 @@
         </div>
     </div>
 </li> --}}
-
-<!-- Nav Item - Charts -->
-<li class="nav-item">
-    <a class="nav-link" href="{{ URL::to('admin/kategori') }}">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Kategori</span></a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ URL::to('admin/user') }}">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>User</span></a>
-</li>
 
 <!-- Nav Item - Tables -->
 {{-- <li class="nav-item">
