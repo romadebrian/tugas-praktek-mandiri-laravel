@@ -49,11 +49,12 @@ class NewsController extends Controller
             'title' => 'required|string',
             'description' => 'required|string',
             'content' => 'required|string',
-            'image' => 'required|string',
+            'image' => 'required|max:2000|mimes:jpg',
         ]);
 
         // dd($validator);
 
+        $validator['image'] = $request->file('image')->store('img'); // Menentukan file yang bisa di upload
         Posts::create($validator);
         return redirect('admin')->with('success', 'Data Berhasil Ditambahkan');
     }
@@ -88,10 +89,14 @@ class NewsController extends Controller
             'title' => 'required|string',
             'description' => 'required|string',
             'content' => 'required|string',
-            'image' => 'required|string',
+            'image' => 'required|max:2000|mimes:jpg',
         ]);
 
         // dd($request);
+        // dd($validator);
+
+        $validator['image'] = $request->file('image')->store('img');
+
         Posts::find($id)->update($validator);
         return redirect('admin')->with('success', 'Data Berhasil Di Update');
     }
