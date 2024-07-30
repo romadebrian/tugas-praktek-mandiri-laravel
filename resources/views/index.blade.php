@@ -31,9 +31,12 @@
 
         <!-- Navbar -->
         {{-- @yield('navbar') --}}
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            @include('navbar')
-        </ul>
+        @auth
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                @include('navbar')
+            </ul>
+        @endauth
+
         <!-- End of Navbar -->
 
         <!-- Content Wrapper -->
@@ -163,12 +166,15 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
+
                 <div class="container-fluid">
 
                     @include('flashmassage')
                     @yield('main')
 
                 </div>
+
+
                 <!-- /.container-fluid -->
 
             </div>
