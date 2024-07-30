@@ -46,7 +46,7 @@
         <span>News</span></a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{{ URL::to('admin/news') }}">
+    <a class="nav-link" href="{{ URL::to('admin/produk') }}">
         <i class="fas fa-fw fa-chart-area"></i>
         <span>Barang</span></a>
 </li>
