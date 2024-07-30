@@ -1,6 +1,6 @@
 @extends('index')
 @section('main')
-    <form action="{{ route('news.store') }}" method="POST">
+    <form action="{{ route('news.store') }}" enctype="multipart/form-data" method="POST">
         @csrf
         <div class="form-group">
             <label>Title</label>
@@ -14,9 +14,10 @@
         </div>
         <div class="form-group">
             <label>Image</label>
-            <input type="text" class="form-control @error('image') is-invalid @enderror" name="image"
+            <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
                 value="{{ old('image') }}">
         </div>
+
         <div class="form-group">
             <label>Content</label>
 
