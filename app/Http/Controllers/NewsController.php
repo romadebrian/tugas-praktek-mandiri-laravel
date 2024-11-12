@@ -52,10 +52,13 @@ class NewsController extends Controller
             'image' => 'required|max:2000|mimes:jpg',
         ]);
 
-        // dd($validator);
-
         $validator['image'] = $request->file('image')->store('img'); // Menentukan file yang bisa di upload
-        Posts::create($validator);
+
+        $validator2 = array_merge($validator, array('author' => 'Authornya',));
+
+        // dd($validator2);
+
+        Posts::create($validator2);
         return redirect('admin')->with('success', 'Data Berhasil Ditambahkan');
     }
 
