@@ -54,7 +54,7 @@ class NewsController extends Controller
 
         $validator['image'] = $request->file('image')->store('img'); // Menentukan file yang bisa di upload
 
-        $validator2 = array_merge($validator, array('author' => 'Authornya',));
+        $validator2 = array_merge($validator, array('author' => Auth::user()->name));
 
         // dd($validator2);
 

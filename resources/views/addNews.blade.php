@@ -2,7 +2,7 @@
 @section('main')
 <form action="{{ route('news.store') }}" enctype="multipart/form-data" method="POST">
     @csrf
-    <h1>{{ Auth::user()->name }}</h1>
+    <h1>author {{ Auth::user()->name }}</h1>
     <div class="form-group">
         <label>Title</label>
         <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
