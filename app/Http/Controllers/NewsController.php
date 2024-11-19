@@ -50,7 +50,7 @@ class NewsController extends Controller
             'title' => 'required|string',
             'description' => 'required|string',
             'content' => 'required|string',
-            'image' => 'required|max:2000|mimes:jpg',
+            'image' => 'required|max:2000|mimes:jpg,png,jpeg',
         ]);
 
         $validator['image'] = $request->file('image')->store('img'); // Menentukan file yang bisa di upload
