@@ -2,11 +2,12 @@
 
 @section('main')
     @foreach ($data as $item)
-        <div class="container mt-5">
+        <div class="container mt-5" style="cursor: pointer;" onclick="location.href='{{ URL::to('post', $item->id) }}';">
             <div class="row">
-                <div class="">
+                <div>
                     <div class="d-flex flex-row">
-                        <div class="p-2"><img src="{{ asset('storage/' . $item->image) }}" alt="Event Image"
+                        <div class="p-2">
+                            <img src="{{ asset('storage/' . $item->image) }}" alt="Event Image"
                                 style="width: 300px; height: 200px; border-radius: 10px;">
 
                         </div>
