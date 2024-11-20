@@ -13,9 +13,23 @@
             <input type="text" class="form-control @error('description') is-invalid @enderror" name="description"
                 value="{{ $data->description }}">
         </div>
+
+        {{-- <div class="form-group">
+            <label>Image</label>
+            <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image"
+                value="{{ $data->image }}">
+        </div> --}}
+
         <div class="form-group">
             <label>Image</label>
-            <input type="file" class="form-control @error('image') is-invalid @enderror" name="image">
+            <div class="file-upload">
+                <div class="file-select">
+                    <div class="file-select-button" id="fileName">Choose New File</div>
+                    <div class="file-select-name" id="noFile">{{ $data->image }}</div>
+                    <input type="file" name="image" id="image" value="{{ $data->image }}"
+                        accept="image/jpg, image/png, image/jpeg">
+                </div>
+            </div>
         </div>
 
         <div class="form-group">
@@ -31,8 +45,8 @@
 
         </div>
 
-
-
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+    @include('components/upload-button')
 @endsection

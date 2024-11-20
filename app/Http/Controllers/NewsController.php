@@ -53,6 +53,8 @@ class NewsController extends Controller
             'image' => 'required|max:2000|mimes:jpg,png,jpeg',
         ]);
 
+        // dd($validator);
+
         $validator['image'] = $request->file('image')->store('img'); // Menentukan file yang bisa di upload
 
         $validator2 = array_merge($validator, array('author' => Auth::user()->name));
@@ -93,13 +95,21 @@ class NewsController extends Controller
             'title' => 'required|string',
             'description' => 'required|string',
             'content' => 'required|string',
-            'image' => 'required|max:2000|mimes:jpg',
+            'image' => 'max:2000|mimes:jpg,png,jpeg',
         ]);
 
         // dd($request);
         // dd($validator);
+        // dd($request);
 
-        $validator['image'] = $request->file('image')->store('img');
+
+        if (!empty($validator['image'])) {
+            $validator['image'] = $request->file('image')->store('img');
+            // dd($validator);
+        }
+
+        // dd($validator);
+
 
         Posts::find($id)->update($validator);
         return redirect('admin')->with('success', 'Data Berhasil Di Update');
