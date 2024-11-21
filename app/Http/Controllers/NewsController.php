@@ -6,6 +6,7 @@ use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -120,6 +121,9 @@ class NewsController extends Controller
      */
     public function destroy(string $id)
     {
+        $data = Posts::find($id);
+        // dd($data['image']);
+        Storage::delete($data['image']);
         Posts::find($id)->delete();
         return redirect('admin')->with('success', 'Data Berhasil di Hapus');
     }
