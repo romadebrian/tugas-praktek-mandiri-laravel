@@ -20,6 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('sb/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    {{-- Main CSS --}}
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+
     {{-- @include('components/head/tinymce-config') --}}
     <x-head.tinymce-config />
 </head>
@@ -165,10 +168,10 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                <!-- Begin Page Content 
+                <!-- Begin Page Content
                 ================================================================
                 -->
-                
+
 
                 <div class="container-fluid">
 
