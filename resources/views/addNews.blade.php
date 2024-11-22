@@ -52,16 +52,14 @@
             <textarea id="myeditorinstance" name="content">{{ old('content') }}</textarea>
         </div>
 
-        <div class="form-check form-check-inline">
+        {{-- <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="namecheckbox1" value="valcheckbox1">
             <label class="form-check-label" for="inlineCheckbox1">1</label>
         </div>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="namecheckbox2" value="valcheckbox2">
             <label class="form-check-label" for="inlineCheckbox2">2</label>
-        </div>
-
-
+        </div> --}}
 
 
 
@@ -69,7 +67,7 @@
             @for ($i = 0; $i < 23; $i++)
                 <div class="checkbox-wrapper-4">
 
-                    <input class="inp-cbx" id="checkbox{{ $i }}" type="checkbox" name="checkbox[]"
+                    <input class="inp-cbx" id="checkbox{{ $i }}" type="checkbox" name="category[]"
                         value="ValCheckbox{{ $i }}" />
                     <label class="cbx" for="checkbox{{ $i }}"><span>
                             <svg width="12px" height="10px">
@@ -88,13 +86,6 @@
                 Add
                 Category</div>
         </div>
-
-
-
-
-
-
-
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

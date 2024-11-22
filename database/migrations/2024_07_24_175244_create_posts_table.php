@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('author');
             $table->text('content');
             $table->text('image');
+            $table->jsonb('category');
             $table->timestamps();
         });
     }

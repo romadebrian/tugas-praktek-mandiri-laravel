@@ -47,22 +47,29 @@ class NewsController extends Controller
     public function store(Request $request)
 
     {
+        // dd($request['category']);
         $validator = $request->validate([
             'title' => 'required|string',
             'description' => 'required|string',
             'content' => 'required|string',
             'image' => 'required|max:2000|mimes:jpg,png,jpeg',
+            'category' => 'nullable|array'
         ]);
 
         // dd($validator);
 
+        // $category = '';
+        // foreach ($request['category'] as $value) {
+        //     $category .=  $value . ',';
+        // }
+
         $validator['image'] = $request->file('image')->store('img'); // Menentukan file yang bisa di upload
 
-        $validator2 = array_merge($validator, array('author' => Auth::user()->name));
+        $merge = array_merge($validator, array('author' => Auth::user()->name));
 
-        // dd($validator2);
+        // dd($merge);
 
-        Posts::create($validator2);
+        Posts::create($merge);
         return redirect('admin')->with('success', 'Data Berhasil Ditambahkan');
     }
 
