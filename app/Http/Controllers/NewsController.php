@@ -16,7 +16,8 @@ class NewsController extends Controller
     public function index()
     {
         // $data = Posts::all();
-        $data = Posts::orderBy('id', 'DESC')->get();
+        // $data = Posts::orderBy('id', 'DESC')->get();
+        $data = Posts::latest()->get();
         // dd($data);
 
 
