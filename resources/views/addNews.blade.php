@@ -47,27 +47,27 @@
             <label class="form-check-label" for="inlineCheckbox1">1</label>
         </div> --}}
 
-        <div class="row" style="">
-            @for ($i = 0; $i < 23; $i++)
+        <div class="row" style="" id="kategori">
+            @foreach ($data as $item)
                 <div class="checkbox-wrapper-4">
 
-                    <input class="inp-cbx" id="checkbox{{ $i }}" type="checkbox" name="category[]"
-                        value="ValCheckbox{{ $i }}" />
-                    <label class="cbx" for="checkbox{{ $i }}"><span>
+                    <input class="inp-cbx" id="{{ $item->id }}" type="checkbox" name="category[]"
+                        value="$item->namaKategori" />
+                    <label class="cbx" for="{{ $item->id }}"><span>
                             <svg width="12px" height="10px">
                                 <use xlink:href="#check-4"></use>
-                            </svg></span><span>checkbox{{ $i }}</span></label>
+                            </svg></span><span>{{ $item->namaKategori }}</span></label>
                     <svg class="inline-svg">
                         <symbol id="check-4" viewbox="0 0 12 10">
                             <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
                         </symbol>
                     </svg>
                 </div>
-            @endfor
+            @endforeach
 
             <div class="btn btn-primary"
                 style="width: 101px; height: 30px; font-size: 12px; font-weight: 400; padding: 6px 8px; margin-bottom: .5rem;"
-                data-toggle="modal" data-target="#exampleModal">
+                data-toggle="modal" data-target="#ModalKategori">
                 Add
                 Category</div>
         </div>
@@ -76,12 +76,12 @@
     </form>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="ModalKategori" tabindex="-1" role="dialog" aria-labelledby="ModalKategoriLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="ModalKategoriLabel">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -131,16 +131,27 @@
                     '_token': token
                 },
                 success: function(response) {
-                    alert("Simpan data berhasil");
+                    // alert("Kategori berhasil di tambah");
                     // //append to table
                     // $('#table-posts').prepend(post);
 
-                    // //clear form
-                    // $('#title').val('');
-                    // $('#content').val('');
+                    //show success message
+                    // Swal.fire({
+                    //     type: 'success',
+                    //     icon: 'success',
+                    //     title: `${response.message}`,
+                    //     showConfirmButton: false,
+                    //     timer: 3000
+                    // });
 
-                    // //close modal
-                    // $('#modal-create').modal('hide');
+                    //clear form
+                    $('#namaKategori').val('');
+                    $('#descKategori').val('');
+
+                    $('#kategori').load(document.URL + ' #kategori');
+
+                    //close modal
+                    $('#ModalKategori').modal('hide');
 
 
                 },

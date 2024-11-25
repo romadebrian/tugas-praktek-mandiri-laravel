@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,10 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('addNews');
+        $data = Kategori::all();
+        // dd($data);
+
+        return view('addNews', compact('data'));
     }
 
     /**
