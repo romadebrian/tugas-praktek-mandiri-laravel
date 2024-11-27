@@ -3,12 +3,12 @@
     <form action="{{ route('news.store') }}" enctype="multipart/form-data" method="POST">
         @csrf
         <div class="form-group">
-            <label>Title</label>
+            <label>Judul</label>
             <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
                 value="{{ old('title') }}">
         </div>
         <div class="form-group">
-            <label>Description</label>
+            <label>Deskripsi</label>
             <input type="text" class="form-control @error('description') is-invalid @enderror" name="description"
                 value="{{ old('description') }}">
         </div>
@@ -20,7 +20,7 @@
         </div> --}}
 
         <div class="form-group">
-            <label>Image</label>
+            <label>Foto</label>
             <div class="file-upload">
                 <div class="file-select">
                     <div class="file-select-button" id="fileName">Choose File</div>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            <label>Content</label>
+            <label>Konten</label>
 
             {{-- <input type="text" class="form-control @error('content') is-invalid @enderror" name="content"
                 value="{{ old('content') }}"> --}}
@@ -66,10 +66,9 @@
             @endforeach
 
             <div class="btn btn-primary"
-                style="width: 101px; height: 30px; font-size: 12px; font-weight: 400; padding: 6px 8px; margin-bottom: .5rem;"
+                style="width: 101px; height: 30px; font-size: 10px; font-weight: bold; padding: 6px 8px; margin-bottom: .5rem;"
                 data-toggle="modal" data-target="#ModalKategori">
-                Add
-                Category</div>
+                Tambah Kategori</div>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
