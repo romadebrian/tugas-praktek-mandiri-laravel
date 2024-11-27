@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        return view('produk/addProduk');
+        $data = Kategori::all();
+        return view('produk/addProduk', compact('data'));
     }
 
     /**
@@ -34,8 +36,9 @@ class ProdukController extends Controller
         $validator = $request->validate([
             'namaProduk' => 'required|string',
             'harga' => 'required|integer',
-            'foto' => 'required|max:2000|mimes:jpg',
             'descProduk' => 'required|string',
+            'foto' => 'required|max:2000|mimes:jpg',
+            'kategori' => 'nullable|array'
         ]);
 
         // dd($validator);
