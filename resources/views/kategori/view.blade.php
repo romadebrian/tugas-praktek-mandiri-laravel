@@ -1,8 +1,9 @@
 @extends('index')
 @section('main')
-    <a href="{{ route('kategori.create') }}" class="btn btn-primary">Tambah Kategori</a>
+    @include('kategori/add')
+    <div class="btn btn-primary" data-toggle="modal" data-target="#ModalKategori">Tambah Kategori</div>
 
-    <table class="table">
+    <table class="table" id="kategori">
         <thead>
             <tr>
                 <th scope="col">No</th>
