@@ -52,13 +52,13 @@ class NewsController extends Controller
     public function store(Request $request)
 
     {
-        // dd($request['category']);
+        // dd($request);
         $validator = $request->validate([
-            'title' => 'required|string',
-            'description' => 'required|string',
-            'content' => 'required|string',
-            'image' => 'required|max:2000|mimes:jpg,png,jpeg',
-            'category' => 'nullable|array'
+            'judul' => 'required|string',
+            'deskripsi' => 'required|string',
+            'konten' => 'required|string',
+            'foto' => 'required|max:2000|mimes:jpg,png,jpeg',
+            'kategori' => 'nullable|array'
         ]);
 
         // dd($validator);
@@ -68,9 +68,9 @@ class NewsController extends Controller
         //     $category .=  $value . ',';
         // }
 
-        $validator['image'] = $request->file('image')->store('img'); // Menentukan file yang bisa di upload
+        $validator['foto'] = $request->file('foto')->store('img'); // Menentukan file yang bisa di upload
 
-        $merge = array_merge($validator, array('author' => Auth::user()->name));
+        $merge = array_merge($validator, array('penulis' => Auth::user()->name));
 
         // dd($merge);
 
@@ -96,7 +96,8 @@ class NewsController extends Controller
     public function edit(string $id)
     {
         $data = Posts::find($id);
-        return view('editNews', compact('data'));
+        $dataKategori = Kategori::all();
+        return view('editNews', compact('data', 'dataKategori'));
     }
 
     /**
@@ -104,25 +105,21 @@ class NewsController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // dd($request);
         $validator = $request->validate([
-            'title' => 'required|string',
-            'description' => 'required|string',
-            'content' => 'required|string',
-            'image' => 'max:2000|mimes:jpg,png,jpeg',
+            'judul' => 'required|string',
+            'deskripsi' => 'required|string',
+            'konten' => 'required|string',
+            'foto' => 'max:2000|mimes:jpg,png,jpeg',
+            'kategori' => 'nullable|array'
         ]);
-
-        // dd($request);
         // dd($validator);
-        // dd($request);
 
-
-        if (!empty($validator['image'])) {
-            $validator['image'] = $request->file('image')->store('img');
+        if (!empty($validator['foto'])) {
+            $validator['foto'] = $request->file('foto')->store('img');
             // dd($validator);
         }
-
-        // dd($validator);
-
+        // $merge = array_merge($validator, array('penulis' => Auth::user()->name));
 
         Posts::find($id)->update($validator);
         return redirect('admin')->with('success', 'Data Berhasil Di Update');
