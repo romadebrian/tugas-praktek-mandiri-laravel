@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('foto');
             $table->integer('harga');
             $table->text('descProduk');
-            $table->string('kategori');
+            $table->jsonb('kategori')->nullable();;
             $table->timestamps();
         });
     }
