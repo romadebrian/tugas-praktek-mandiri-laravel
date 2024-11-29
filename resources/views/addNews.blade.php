@@ -4,13 +4,13 @@
         @csrf
         <div class="form-group">
             <label>Judul</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
-                value="{{ old('title') }}">
+            <input type="text" class="form-control @error('judul') is-invalid @enderror" name="judul"
+                value="{{ old('judul') }}">
         </div>
         <div class="form-group">
             <label>Deskripsi</label>
-            <input type="text" class="form-control @error('description') is-invalid @enderror" name="description"
-                value="{{ old('description') }}">
+            <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi"
+                value="{{ old('deskripsi') }}">
         </div>
 
         {{-- <div class="form-group">
@@ -24,8 +24,8 @@
             <div class="file-upload">
                 <div class="file-select">
                     <div class="file-select-button" id="fileName">Choose File</div>
-                    <div class="file-select-name" id="noFile">No file chosen...</div>
-                    <input type="file" name="image" id="image">
+                    <div class="file-select-name" id="noFile">No file chosen... (Max 2MB)</div>
+                    <input type="file" name="foto" id="foto">
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             {{-- @include('components/forms/tinymce-editor') --}}
             {{-- <x-forms.tinymce-editor /> --}}
 
-            <textarea id="myeditorinstance" name="content">{{ old('content') }}</textarea>
+            <textarea id="myeditorinstance" name="konten" class="">{{ old('konten') }}</textarea>
         </div>
 
         {{-- <div class="form-check form-check-inline">
@@ -51,8 +51,8 @@
             @foreach ($data as $item)
                 <div class="checkbox-wrapper-4">
 
-                    <input class="inp-cbx" id="{{ $item->id }}" type="checkbox" name="category[]"
-                        value="$item->namaKategori" />
+                    <input class="inp-cbx" id="{{ $item->id }}" type="checkbox" name="kategori[]"
+                        value="{{ $item->namaKategori }}" />
                     <label class="cbx" for="{{ $item->id }}"><span>
                             <svg width="12px" height="10px">
                                 <use xlink:href="#check-4"></use>
