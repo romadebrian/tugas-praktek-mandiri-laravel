@@ -4,7 +4,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ModalKategoriLabel">Category</h5>
+                <h5 class="modal-title" id="ModalKategoriLabel">Kategori</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,12 +13,12 @@
             <div class="modal-body">
 
                 <div class="form-group">
-                    <label>Name</label>
+                    <label>Nama</label>
                     <input type="text" class="form-control @error('namaKategori') is-invalid @enderror"
                         name="namaKategori" value="{{ old('namaKategori') }}" id="namaKategori">
                 </div>
                 <div class="form-group">
-                    <label>Description</label>
+                    <label>Deskripsi</label>
                     <input type="text" class="form-control @error('descKategori') is-invalid @enderror"
                         name="descKategori" value="{{ old('descKategori') }}" id="descKategori">
                 </div>

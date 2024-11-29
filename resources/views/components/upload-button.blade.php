@@ -116,11 +116,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-1.10.2@1.10.2/jquery-1.10.2.min.js"></script>
 <script>
-    $('#image').bind('change', function() {
-        var filename = $("#image").val();
+    $('#foto').bind('change', function() {
+        var filename = $("#foto").val();
         if (/^\s*$/.test(filename)) {
             $(".file-upload").removeClass('active');
-            $("#noFile").text("No file chosen...");
+            $("#noFile").text("No file chosen... (Max 2MB)");
         } else {
             $(".file-upload").addClass('active');
             $("#noFile").text(filename.replace("C:\\fakepath\\", ""));
