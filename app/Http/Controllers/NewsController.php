@@ -121,6 +121,10 @@ class NewsController extends Controller
         }
         // $merge = array_merge($validator, array('penulis' => Auth::user()->name));
 
+        if (empty($validator['kategori'])) {
+            $validator['kategori'] = null;
+        }
+
         Posts::find($id)->update($validator);
         return redirect('admin')->with('success', 'Data Berhasil Di Update');
     }
