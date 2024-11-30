@@ -54,7 +54,8 @@ class KategoriController extends Controller
     public function edit(string $id)
     {
         $data = Kategori::find($id);
-        return view('kategori/edit', compact('data'));
+        // return view('kategori/edit', compact('data'));
+        return json_encode($data);
     }
 
     /**
