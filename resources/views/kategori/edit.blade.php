@@ -31,10 +31,13 @@
 </div>
 
 <script>
+    let id_kategori = "";
+
     function GetDetailKategori(id) {
         // document.getElementById("demo").innerHTML = "Paragraph changed.";
         // alert(id);
         $('#EditKategori').modal('show');
+        id_kategori = id;
 
         // ajax
         $.ajax({
@@ -42,14 +45,14 @@
             type: "GET",
             dataType: "json",
             success: function(dataKategori) {
-                console.log("Data Berhasil Didapat", dataKategori);
+                // console.log("Data Berhasil Didapat", dataKategori);
                 // console.log(dataKategori['namaKategori']);
                 // document.getElementById("editNamaKategori").value = dataKategori['namaKategori'];
                 $('#editNamaKategori').val(dataKategori['namaKategori']);
                 $('#editDescKategori').val(dataKategori['descKategori']);
             },
             error: function(error) {
-                console.log(error);
+                console.log("error get data", error);
             }
         });
     }
@@ -57,22 +60,26 @@
     document.getElementById("simpanPerubahan").addEventListener("click", function(e) {
         e.preventDefault();
 
+        // console.log("id_kategori", id_kategori);
+
         //define variable
         let title = $('#editNamaKategori').val();
         let content = $('#editDescKategori').val();
         let token = '{{ csrf_token() }}';
 
-        console.log(title, content, token);
+        // console.log(title, content, token);
 
         // ajax
         $.ajax({
-            url: `/admin/kategori`,
+            url: `/admin/kategori/` + id_kategori,
+            // url: "{{ route('kategori.update', 15) }}",
             type: "POST",
             cache: false,
             data: {
                 "namaKategori": title,
                 "descKategori": content,
-                '_token': token
+                '_token': token,
+                '_method': 'PUT',
             },
             success: function(response) {
                 // alert("Kategori berhasil di tambah");
@@ -89,18 +96,19 @@
                 // });
 
                 //clear form
-                $('#namaKategori').val('');
-                $('#descKategori').val('');
+                $('#editNamaKategori').val('');
+                $('#editDescKategori').val('');
 
                 $('#kategori').load(document.URL + ' #kategori');
 
                 //close modal
-                $('#ModalKategori').modal('hide');
+                $('#EditKategori').modal('hide');
 
 
             },
-            error: function(error) {}
-
+            error: function(error) {
+                console.log("error put data", error);
+            }
         });
     });
 </script>
