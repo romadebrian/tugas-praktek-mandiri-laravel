@@ -23,6 +23,9 @@
     {{-- Main CSS --}}
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
+    <!-- Custom styles for this page -->
+    <link href="{{ asset('sb/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
     {{-- @include('components/head/tinymce-config') --}}
     <x-head.tinymce-config />
 </head>
@@ -234,11 +237,13 @@
 
     <!-- Page level plugins -->
     <script src="{{ asset('sb/vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('sb/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('sb/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
     <script src="{{ asset('sb/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('sb/js/demo/chart-pie-demo.js') }}"></script>
-
+    <script src="{{ asset('sb/js/demo/datatables-demo.js') }}"></script>
 </body>
 
 </html>
