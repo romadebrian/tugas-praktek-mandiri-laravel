@@ -13,7 +13,8 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $data = Produk::all();
+        // $data = Produk::all();
+        $data = Produk::latest()->get();
         // dd($data);
 
         return view('produk', compact('data'));
@@ -37,7 +38,7 @@ class ProdukController extends Controller
             'namaProduk' => 'required|string',
             'harga' => 'required|integer',
             'descProduk' => 'required|string',
-            'foto' => 'required|max:2000|mimes:jpg',
+            'foto' => 'required|max:2000|mimes:jpg,png,jpeg',
             'kategori' => 'nullable|array'
         ]);
 
