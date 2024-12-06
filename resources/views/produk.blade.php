@@ -15,17 +15,17 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th scope="col">id</th>
+                            {{-- <th scope="col">id</th> --}}
                             <th scope="col">Nama</th>
                             <th scope="col">Foto</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Kategori</th>
-                            <th scope="col">Aksi</th>
+                            <th scope="col" width="1">Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th scope="col">id</th>
+                            {{-- <th scope="col">id</th> --}}
                             <th scope="col">Nama</th>
                             <th scope="col">Foto</th>
                             <th scope="col">Harga</th>
@@ -36,18 +36,20 @@
                     <tbody>
                         @foreach ($data as $item)
                             <tr>
-                                <td scope="row">{{ $loop->iteration }}</td>
+                                {{-- <td scope="row">{{ $loop->iteration }}</td> --}}
+                                {{-- <td scope="row">{{ $item->id }}</td> --}}
                                 <td>{{ $item->namaProduk }}</td>
                                 <td><img src="{{ asset('storage/' . $item->foto) }}" alt="Event Image"
                                         style="width: 100px; height: 50px; border-radius: 10px;">
                                 </td>
                                 <td>{{ $item->harga }}</td>
                                 <td width="300">
-                                    @for ($i = 0; $i < 100; $i++)
+                                    @foreach ($item->kategori as $category)
                                         <span class="badge badge-primary p-1">
-                                            Kategori 1
+                                            {{-- @dd($category) --}}
+                                            {{ $category }}
                                         </span>
-                                    @endfor
+                                    @endforeach
                                 </td>
                                 {{-- <td>{{ $item->kategori }}</td> --}}
                                 <td class="d-flex">
