@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use App\Models\Posts;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -84,10 +85,10 @@ class NewsController extends Controller
     public function show(string $id)
     {
         $data = Posts::find($id);
-        // dd($data);
+        // dd($data['kategori']);
+        $dataProduk = Produk::all();
 
-
-        return view('viewNews', compact('data'));
+        return view('viewNews', compact('data', 'dataProduk'));
     }
 
     /**
