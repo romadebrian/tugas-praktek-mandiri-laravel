@@ -41,21 +41,32 @@
                                     $found = 'ada';
                                 @endphp
                                 {{-- {{ $kategoriPost }} --}}
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="cursor: pointer;"
+                                    onclick="location.href='{{ URL::to('produk', $itemProduk->id) }}';">
                                     <div class="card mb-4 box-shadow">
                                         <img class="card-img-top" src="{{ asset('storage/' . $itemProduk->foto) }}"
                                             alt="Card image cap">
                                         <div class="card-body">
-                                            <p class="card-text">This is a wider card with supporting text below as a
-                                                natural
-                                                lead-in to
-                                                additional content. This content is a little bit longer.</p>
+                                            <a href="http://" class="customlinkhover">
+                                                <p class="card-text card-tanggal ">
+                                                    {{ $itemProduk->created_at }}</p>
+                                                <p class="card-text" style="font-weight: bold">{{ $itemProduk->namaProduk }}
+                                                </p>
+                                            </a>
+                                            </br>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
-                                                    <button type="button"
-                                                        class="btn btn-sm btn-outline-secondary">View</button>
-                                                    <button type="button"
-                                                        class="btn btn-sm btn-outline-secondary">Edit</button>
+                                                    <div class="row">
+                                                        @foreach ($itemProduk->kategori as $badgeKategori)
+                                                            <div class="btn btn-sm btn-outline-secondary">
+                                                                {{ $badgeKategori }}
+                                                            </div>
+                                                        @endforeach
+                                                        {{-- <span class="badge badge-primary p-1"> --}}
+                                                        {{-- @dd($category) --}}
+                                                        {{-- {{ $kategoriPost }} --}}
+                                                        {{-- </span> --}}
+                                                    </div>
                                                 </div>
                                                 <small class="text-muted">{{ $itemProduk->harga }}</small>
                                             </div>

@@ -116,3 +116,24 @@
         transform: scale(0.9);
     }
 }
+
+.card-tanggal {
+    color: rgb(210, 210, 210);
+    margin-bottom: 1px;
+    font-size: 12px;
+}
+
+.customlinkhover:link {
+    text-decoration: none;
+}
+.customlinkhover:visited {
+    text-decoration: none;
+}
+.customlinkhover:hover {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 900;
+}
+.customlinkhover:active {
+    text-decoration: none;
+}
