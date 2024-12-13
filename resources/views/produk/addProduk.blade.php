@@ -20,7 +20,7 @@
                 <div class="file-select">
                     <div class="file-select-button" id="fileName">Choose File</div>
                     <div class="file-select-name" id="noFile">No file chosen... (Max 2MB)</div>
-                    <input type="file" name="foto" id="image">
+                    <input type="file" name="foto" id="foto">
                 </div>
             </div>
         </div>
