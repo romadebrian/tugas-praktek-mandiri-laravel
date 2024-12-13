@@ -47,7 +47,7 @@
                                         <img class="card-img-top" src="{{ asset('storage/' . $itemProduk->foto) }}"
                                             alt="Card image cap">
                                         <div class="card-body">
-                                            <a href="http://" class="customlinkhover">
+                                            <a href="{{ URL::to('produk', $itemProduk->id) }}" class="customlinkhover">
                                                 <p class="card-text card-tanggal ">
                                                     {{ $itemProduk->created_at }}</p>
                                                 <p class="card-text" style="font-weight: bold">{{ $itemProduk->namaProduk }}
