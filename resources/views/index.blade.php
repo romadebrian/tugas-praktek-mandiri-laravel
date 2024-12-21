@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>JamuIndo</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('sb/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -19,6 +19,12 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('sb/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+    {{-- Main CSS --}}
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="{{ asset('sb/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
     {{-- @include('components/head/tinymce-config') --}}
     <x-head.tinymce-config />
@@ -165,7 +171,10 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
+                <!-- Begin Page Content
+                ================================================================
+                -->
+
 
                 <div class="container-fluid">
 
@@ -228,11 +237,13 @@
 
     <!-- Page level plugins -->
     <script src="{{ asset('sb/vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('sb/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('sb/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
     <script src="{{ asset('sb/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('sb/js/demo/chart-pie-demo.js') }}"></script>
-
+    <script src="{{ asset('sb/js/demo/datatables-demo.js') }}"></script>
 </body>
 
 </html>

@@ -68,6 +68,7 @@ Route::get('post/{id_post}', [NewsController::class, 'show']);
 // });
 
 Route::resource('admin/produk', ProdukController::class)->middleware(['auth', 'editor']);
+Route::get('produk/{id_produk}', [ProdukController::class, 'show']);
 
 Route::resource('admin/kategori', KategoriController::class)->middleware(['auth', 'editor']);
 

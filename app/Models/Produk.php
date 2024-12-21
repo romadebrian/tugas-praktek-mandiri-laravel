@@ -12,4 +12,8 @@ class Produk extends Model
     protected $table = 'produk';
 
     protected $guarded = ['id'];
+
+    protected $casts = [
+        'kategori' => 'array',
+    ];
 }

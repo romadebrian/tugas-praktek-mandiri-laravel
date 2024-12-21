@@ -12,4 +12,8 @@ class Posts extends Model
     protected $table = 'posts';
 
     protected $guarded = ['id'];
+
+    protected $casts = [
+        'kategori' => 'array',
+    ];
 }

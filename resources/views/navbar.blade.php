@@ -1,9 +1,10 @@
 <!-- Sidebar - Brand -->
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ URL::to('/') }}">
     <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-laugh-wink"></i>
+        {{-- <i class="fas fa-laugh-wink"></i> --}}
+        <img src="{{ asset('img/logo.png') }}" alt="logo" width="39" height="39">
     </div>
-    <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+    <div class="sidebar-brand-text mx-3">JamuIndo</div>
 </a>
 
 <!-- Divider -->

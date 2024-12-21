@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use App\Models\Posts;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -14,7 +17,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $data = Posts::all();
+        // $data = Posts::all();
+        // $data = Posts::orderBy('id', 'DESC')->get();
+        $data = Posts::latest()->get();
         // dd($data);
 
 
@@ -36,7 +41,10 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('addNews');
+        $data = Kategori::all();
+        // dd($data);
+
+        return view('addNews', compact('data'));
     }
 
     /**
@@ -45,20 +53,29 @@ class NewsController extends Controller
     public function store(Request $request)
 
     {
+        // dd($request);
         $validator = $request->validate([
-            'title' => 'required|string',
-            'description' => 'required|string',
-            'content' => 'required|string',
-            'image' => 'required|max:2000|mimes:jpg',
+            'judul' => 'required|string',
+            'deskripsi' => 'required|string',
+            'konten' => 'required|string',
+            'foto' => 'required|max:2000|mimes:jpg,png,jpeg',
+            'kategori' => 'nullable|array'
         ]);
 
-        $validator['image'] = $request->file('image')->store('img'); // Menentukan file yang bisa di upload
+        // dd($validator);
 
-        $validator2 = array_merge($validator, array('author' => 'Authornya',));
+        // $category = '';
+        // foreach ($request['category'] as $value) {
+        //     $category .=  $value . ',';
+        // }
 
-        // dd($validator2);
+        $validator['foto'] = $request->file('foto')->store('img'); // Menentukan file yang bisa di upload
 
-        Posts::create($validator2);
+        $merge = array_merge($validator, array('penulis' => Auth::user()->name));
+
+        // dd($merge);
+
+        Posts::create($merge);
         return redirect('admin')->with('success', 'Data Berhasil Ditambahkan');
     }
 
@@ -68,10 +85,10 @@ class NewsController extends Controller
     public function show(string $id)
     {
         $data = Posts::find($id);
-        // dd($data);
+        // dd($data['kategori']);
+        $dataProduk = Produk::all();
 
-
-        return view('viewNews', compact('data'));
+        return view('viewNews', compact('data', 'dataProduk'));
     }
 
     /**
@@ -80,7 +97,8 @@ class NewsController extends Controller
     public function edit(string $id)
     {
         $data = Posts::find($id);
-        return view('editNews', compact('data'));
+        $dataKategori = Kategori::all();
+        return view('editNews', compact('data', 'dataKategori'));
     }
 
     /**
@@ -88,17 +106,25 @@ class NewsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validator = $request->validate([
-            'title' => 'required|string',
-            'description' => 'required|string',
-            'content' => 'required|string',
-            'image' => 'required|max:2000|mimes:jpg',
-        ]);
-
         // dd($request);
+        $validator = $request->validate([
+            'judul' => 'required|string',
+            'deskripsi' => 'required|string',
+            'konten' => 'required|string',
+            'foto' => 'max:2000|mimes:jpg,png,jpeg',
+            'kategori' => 'nullable|array'
+        ]);
         // dd($validator);
 
-        $validator['image'] = $request->file('image')->store('img');
+        if (!empty($validator['foto'])) {
+            $validator['foto'] = $request->file('foto')->store('img');
+            // dd($validator);
+        }
+        // $merge = array_merge($validator, array('penulis' => Auth::user()->name));
+
+        if (empty($validator['kategori'])) {
+            $validator['kategori'] = null;
+        }
 
         Posts::find($id)->update($validator);
         return redirect('admin')->with('success', 'Data Berhasil Di Update');
@@ -109,6 +135,9 @@ class NewsController extends Controller
      */
     public function destroy(string $id)
     {
+        $data = Posts::find($id);
+        // dd($data['image']);
+        Storage::delete($data['image']);
         Posts::find($id)->delete();
         return redirect('admin')->with('success', 'Data Berhasil di Hapus');
     }

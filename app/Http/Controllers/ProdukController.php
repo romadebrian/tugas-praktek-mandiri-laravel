@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $data = Produk::all();
+        // $data = Produk::all();
+        $data = Produk::latest()->get();
         // dd($data);
 
         return view('produk', compact('data'));
@@ -23,7 +25,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        return view('produk/addProduk');
+        $data = Kategori::all();
+        return view('produk/addProduk', compact('data'));
     }
 
     /**
@@ -34,8 +37,9 @@ class ProdukController extends Controller
         $validator = $request->validate([
             'namaProduk' => 'required|string',
             'harga' => 'required|integer',
-            'foto' => 'required|max:2000|mimes:jpg',
             'descProduk' => 'required|string',
+            'foto' => 'required|max:2000|mimes:jpg,png,jpeg',
+            'kategori' => 'nullable|array'
         ]);
 
         // dd($validator);
@@ -50,7 +54,10 @@ class ProdukController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Produk::find($id);
+        // dd($data['kategori']);
+
+        return view('produk/viewProduk', compact('data'));
     }
 
     /**
@@ -59,7 +66,8 @@ class ProdukController extends Controller
     public function edit(string $id)
     {
         $data = Produk::find($id);
-        return view('produk/editProduk', compact('data'));
+        $dataKategori = Kategori::all();
+        return view('produk/editProduk', compact('data', 'dataKategori'));
     }
 
     /**
@@ -67,17 +75,26 @@ class ProdukController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // dd($request);
         $validator = $request->validate([
             'namaProduk' => 'required|string',
             'harga' => 'required|integer',
-            'foto' => 'required|max:2000|mimes:jpg',
             'descProduk' => 'required|string',
+            'foto' => 'max:2000|mimes:jpg,png,jpeg',
+            'kategori' => 'nullable|array'
         ]);
 
-        // dd($request);
         // dd($validator);
 
-        $validator['foto'] = $request->file('foto')->store('img');
+        if (!empty($validator['foto'])) {
+            $validator['foto'] = $request->file('foto')->store('img');
+            // dd($validator);
+        }
+        // $merge = array_merge($validator, array('penulis' => Auth::user()->name));
+
+        if (empty($validator['kategori'])) {
+            $validator['kategori'] = null;
+        }
 
         Produk::find($id)->update($validator);
         return redirect('admin/produk')->with('success', 'Data Berhasil Di Update');

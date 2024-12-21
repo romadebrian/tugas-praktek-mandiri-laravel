@@ -1,8 +1,8 @@
 @extends('index')
 @section('main')
-    <a href="{{ route('kategori.create') }}" class="btn btn-primary">Tambah Kategori</a>
+    <div class="btn btn-primary" data-toggle="modal" data-target="#ModalKategori">Tambah Kategori</div>
 
-    <table class="table">
+    <table class="table" id="kategori">
         <thead>
             <tr>
                 <th scope="col">No</th>
@@ -18,8 +18,11 @@
                     <td>{{ $item->namaKategori }}</td>
                     <td>{{ $item->descKategori }}</td>
                     <td class="d-flex">
-                        <a href="{{ route('kategori.edit', $item->id) }}" class="btn btn-warning"
-                            style="margin-right: 5px">Edit</a>
+                        {{-- <a href="{{ route('kategori.edit', $item->id) }}" class="btn btn-warning"
+                            style="margin-right: 5px">Edit</a> --}}
+                        <div class="btn btn-warning" style="margin-right: 5px"
+                            onclick="GetDetailKategori({{ $item->id }})">Edit
+                        </div>
                         <form action="{{ route('kategori.destroy', $item->id) }}" method="POST">
                             @csrf
                             @method('delete')
@@ -33,4 +36,7 @@
 
         </tbody>
     </table>
+
+    @include('kategori/add')
+    @include('kategori/edit')
 @endsection
