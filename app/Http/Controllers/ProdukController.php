@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use App\Models\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProdukController extends Controller
 {
@@ -105,6 +106,9 @@ class ProdukController extends Controller
      */
     public function destroy(string $id)
     {
+        $data = Produk::find($id);
+        // dd($data['image']);
+        Storage::delete($data['foto']);
         Produk::find($id)->delete();
         return redirect('admin/produk')->with('success', 'Data Berhasil di Hapus');
     }
