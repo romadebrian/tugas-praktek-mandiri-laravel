@@ -31,7 +31,7 @@ Level Akses
 
 # Screenshot
 
-<img src=https://github.com/romadebrian/WEB-Sekolah/blob/master/Screenshot.png />
+<img src=https://github.com/romadebrian/tugas-praktek-mandiri-laravel/blob/main/Screenshot/home.png />
 
 # Run Project
 
