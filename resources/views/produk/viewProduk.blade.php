@@ -36,10 +36,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div>
                 {{-- {{ $data->content }} --}}
                 @php
                     echo $data->descProduk;
-                @endphp</div>
+                @endphp
+            </div>
         </div>
     @endsection
