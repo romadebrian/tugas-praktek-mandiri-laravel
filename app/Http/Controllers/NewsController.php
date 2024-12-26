@@ -137,7 +137,7 @@ class NewsController extends Controller
     {
         $data = Posts::find($id);
         // dd($data['image']);
-        Storage::delete($data['image']);
+        Storage::delete($data['foto']);
         Posts::find($id)->delete();
         return redirect('admin')->with('success', 'Data Berhasil di Hapus');
     }

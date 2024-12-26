@@ -7,7 +7,7 @@
             <p>{{ $data->penulis }}</p>
             <p style="margin-top: -10px">{{ $data->created_at }}</p>
 
-            <div class="" style="display: flex; justify-content: center">
+            <div class="mb-5" style="display: flex; justify-content: center">
                 <img src="{{ asset('storage/' . $data->foto) }}" alt="{{ $data->image }}"
                     style="width: 300px; height: 200px; border-radius: 10px;">
             </div>
@@ -44,8 +44,10 @@
                                 <div class="col-md-4" style="cursor: pointer;"
                                     onclick="location.href='{{ URL::to('produk', $itemProduk->id) }}';">
                                     <div class="card mb-4 box-shadow">
-                                        <img class="card-img-top" src="{{ asset('storage/' . $itemProduk->foto) }}"
-                                            alt="Card image cap">
+
+                                        <img class="card-img-top" style="height: 200px; object-fit: fill;"
+                                            src="{{ asset('storage/' . $itemProduk->foto) }}" alt="Card image cap">
+
                                         <div class="card-body">
                                             <a href="{{ URL::to('produk', $itemProduk->id) }}" class="customlinkhover">
                                                 <p class="card-text card-tanggal ">

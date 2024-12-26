@@ -42,7 +42,7 @@
                                 <td><img src="{{ asset('storage/' . $item->foto) }}" alt="Event Image"
                                         style="width: 100px; height: 50px; border-radius: 10px;">
                                 </td>
-                                <td>{{ $item->harga }}</td>
+                                <td>{{ number_format($item->harga) }}</td>
                                 <td width="300">
                                     @foreach ($item->kategori as $category)
                                         <span class="badge badge-primary p-1">
