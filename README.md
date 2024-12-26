@@ -31,7 +31,25 @@ Level Akses
 
 # Screenshot
 
-<img src=https://github.com/romadebrian/WEB-Sekolah/blob/master/Screenshot.png />
+## Beranda
+
+<img src=https://github.com/romadebrian/tugas-praktek-mandiri-laravel/blob/main/Screenshot/home.png />
+
+## Post
+
+<img src=https://github.com/romadebrian/tugas-praktek-mandiri-laravel/blob/main/Screenshot/news.png />
+
+## Produk
+
+<img src=https://github.com/romadebrian/tugas-praktek-mandiri-laravel/blob/main/Screenshot/produk.png />
+
+## Kategori
+
+<img src=https://github.com/romadebrian/tugas-praktek-mandiri-laravel/blob/main/Screenshot/kategori.png />
+
+## user
+
+<img src=https://github.com/romadebrian/tugas-praktek-mandiri-laravel/blob/main/Screenshot/user.png />
 
 # Run Project
 
