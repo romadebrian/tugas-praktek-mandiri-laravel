@@ -35,9 +35,17 @@ Level Akses
 
 <img src=https://github.com/romadebrian/tugas-praktek-mandiri-laravel/blob/main/Screenshot/home.png />
 
+## Detail Post
+
+<img src=https://github.com/romadebrian/tugas-praktek-mandiri-laravel/blob/main/Screenshot/detailpost.png />
+
 ## Post
 
 <img src=https://github.com/romadebrian/tugas-praktek-mandiri-laravel/blob/main/Screenshot/news.png />
+
+## Detail Produk
+
+<img src=https://github.com/romadebrian/tugas-praktek-mandiri-laravel/blob/main/Screenshot/detailproduk.png />
 
 ## Produk
 
